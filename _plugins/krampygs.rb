@@ -84,7 +84,7 @@ module Jekyll
       end
       content = content.gsub(start_falg, '')
       content = content.gsub(end_flag, '')
-      return content
+      return 'content'
     end
   end
 end
