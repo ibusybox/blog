@@ -74,13 +74,12 @@ module Jekyll
       sub_str = ''
       while start_index >= 0 do
         end_index = content.index(end_flag)
-        if end_index <= 0
+        if end_index <= 0 or end_index < start_index
           start_index = content.index(start_falg)
           next
         end
         sub_str = content[start_index..end_index]
-        content = content.sub(sub_str, '***')
-
+        content[sub_str] = '***'
         start_index = content.index(start_falg)
       end
       content = content.gsub(start_falg, '')
