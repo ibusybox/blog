@@ -4,6 +4,9 @@ markdown_ext: 	  foo
 markdown: 		  kramdown
 pygments:         true
 
+kramdown:
+  input: GFM
+
 # Permalinks
 permalink:        pretty
 
