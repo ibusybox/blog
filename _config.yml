@@ -1,5 +1,5 @@
 # Dependencies
-markdown_ext: 	  foo
+#markdown_ext: 	  foo
 #markdown:         redcarpet
 markdown: 		  kramdown
 pygments:         true
