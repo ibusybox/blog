@@ -52,6 +52,8 @@ module Jekyll
     end
 
     def convert(content)
+      content = encrypt_private(content)
+
       html = Kramdown::Document.new(content, {
           :auto_ids             => @config['kramdown']['auto_ids'],
           :footnote_nr          => @config['kramdown']['footnote_nr'],
@@ -62,6 +64,28 @@ module Jekyll
           :input                => @config['kramdown']['input']
       }).to_pygs
       return Typogruby.improve(html)
+    end
+
+    def encrypt_private(content)
+      start_falg = '<private>'
+      end_flag = '</private>'
+      start_index = content.index(start_falg)
+      end_index = -1
+      sub_str = ''
+      while start_index >= 0 do
+        end_index = content.index(end_flag)
+        if end_index <= 0
+          start_index = content.index(start_falg)
+          next
+        end
+        sub_str = content[start_index..end_index]
+        content = content.sub(sub_str, '***')
+
+        start_index = content.index(start_falg)
+      end
+      content = content.gsub(start_falg, '')
+      content = content.gsub(end_flag, '')
+      return content
     end
   end
 end
