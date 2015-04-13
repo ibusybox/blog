@@ -69,22 +69,22 @@ module Jekyll
     def encrypt_private(content)
       start_falg = '<private>'
       end_flag = '</private>'
-      start_index = content.index(start_falg)
+      start_index = content.index(start_falg) || -1
       end_index = -1
       sub_str = ''
       while start_index >= 0 do
-        end_index = content.index(end_flag)
+        end_index = content.index(end_flag) || -1
         if end_index <= 0 or end_index < start_index
-          start_index = content.index(start_falg)
+          start_index = content.index(start_falg) || -1
           next
         end
-        sub_str = content[start_index..end_index]
+        sub_str = content[start_index..end_index+9]
         content[sub_str] = '***'
-        start_index = content.index(start_falg)
+        start_index = content.index(start_falg) || -1
       end
       content = content.gsub(start_falg, '')
       content = content.gsub(end_flag, '')
-      return 'content'
+      return content
     end
   end
 end
