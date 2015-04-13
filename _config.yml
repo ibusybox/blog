@@ -2,7 +2,8 @@
 #markdown_ext: 	  foo
 #markdown:         redcarpet
 markdown: 		  kramdown
-pygments:         true
+#pygments:         true
+highlighter:   pygments
 
 kramdown:
   input: GFM
