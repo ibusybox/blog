@@ -12,8 +12,8 @@ kramdown:
 permalink:        pretty
 
 # Setup
-title:            圣托马斯
-tagline:          一个程序员
+title:            Mao
+tagline:          
 url:              http://blog.utopia-project.com
 paginate:         1
 baseurl:          /
